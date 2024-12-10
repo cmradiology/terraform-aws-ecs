@@ -1052,7 +1052,7 @@ data "aws_iam_policy_document" "tasks" {
   }
 
   dynamic "statement" {
-    for_each = var.tasks_iam_role_statements != null ? var.tasks_iam_role_statements : [{}]
+    for_each = var.tasks_iam_role_statements != null ? var.tasks_iam_role_statements : tolist([{}])
 
     content {
       sid           = try(statement.value.sid, null)
